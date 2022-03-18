@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+}
+.navbar_brand{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    letter-spacing: .5rem;
+    text-decoration: none;
+}
+.navbar_nav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.navbar_item{
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}

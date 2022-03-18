@@ -1,0 +1,15 @@
+.button{
+    background-color: rgba(248, 69, 159, 0.3);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: larger;
+    font-weight: 600;
+    border-radius: 20% 0 20% 0;
+    margin: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
