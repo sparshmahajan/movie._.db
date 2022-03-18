@@ -8,10 +8,10 @@ const Navbar = () => {
         <nav className={classes.navbar}>
             <div className={classes.navbar_brand}>MOVIES._.DB</div>
             <Search_bar />
-            <ul className={classes.navbar_nav}>
+            {/* <ul className={classes.navbar_nav}>
                 <li className={classes.navbar_item}>MOVIES</li>
                 <li className={classes.navbar_item}> TV SHOWS </li>
-            </ul>
+            </ul> */}
             <Button />
         </nav>
     );

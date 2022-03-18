@@ -1,4 +1,3 @@
-import defaultProps from 'react-slick/lib/default-props';
 import classes from './Card.module.css';
 
 const Card = (props) => {

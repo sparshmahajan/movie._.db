@@ -15,7 +15,7 @@ const breakPoints = [
     { width: 1600, itemsToShow: 9, itemsToScroll: 9 },
 ];
 
-let search_word = 'movie';
+let search_word = 'trending_movie';
 let url = "http://localhost:5000/tmdb/";
 
 const CardHolder = (props) => {
@@ -36,7 +36,12 @@ const CardHolder = (props) => {
         search_word = 'top_rated_movie';
     } else if (props.children === 'top rated tv shows') {
         search_word = 'top_rated_tv';
+    } else if (props.children === 'upcoming movies') {
+        search_word = 'upcoming_movie';
+    } else if (props.children === 'on the air tv shows') {
+        search_word = 'on_the_air';
     }
+
 
     console.log(search_word);
 
