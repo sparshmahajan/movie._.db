@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/UI/Navbar';
+import CardHolder from './components/UI/CardHolder';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <logo></logo>
+      <CardHolder >MOVIES</CardHolder>
+      <CardHolder> TV SHOWS</CardHolder>
     </div>
   );
 }

@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #000;
+    margin-bottom: 20px;
 }
 .navbar_brand{
     font-size: 2rem;
