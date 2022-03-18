@@ -19,6 +19,7 @@ const Card = (props) => {
                 <li>Language : {language}</li>
                 <li>Release Date : {release_date}</li>
                 <li> Ratings : {vote_average}</li>
+                <li>Type : {media_type}</li>
             </ul>
         </div>);
 };
