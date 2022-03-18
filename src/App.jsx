@@ -6,8 +6,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <CardHolder >MOVIES</CardHolder>
-      <CardHolder> TV SHOWS</CardHolder>
+      <CardHolder >trending movies</CardHolder>
+      <CardHolder>trending tv shows</CardHolder>
+      {/* <CardHolder>search results for Anohana</CardHolder> */}
     </div>
   );
 }

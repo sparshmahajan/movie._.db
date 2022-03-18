@@ -16,16 +16,32 @@ const breakPoints = [
 ];
 
 let search_word = 'movie';
+let url = "http://localhost:5000/tmdb/";
 
 const CardHolder = (props) => {
 
-    if (props.children === 'MOVIES') {
-        search_word = 'movie';
-    } else {
-        search_word = 'tv';
+    if (props.children === 'trending movies') {
+        search_word = 'trending_movie';
+    } else if (props.children === 'trending tv shows') {
+        search_word = 'trending_tv';
+    } else if (props.children === 'latest movies') {
+        search_word = 'popular_movie';
+    } else if (props.children === 'latest tv shows') {
+        search_word = 'popular_tv';
+    } else if (props.children === 'popular movies') {
+        search_word = 'popular_movie';
+    } else if (props.children === 'popular tv shows') {
+        search_word = 'popular_tv';
+    } else if (props.children === 'top rated movies') {
+        search_word = 'top_rated_movie';
+    } else if (props.children === 'top rated tv shows') {
+        search_word = 'top_rated_tv';
     }
 
-    const url = "http://localhost:5000/tmdb/trending_" + search_word;
+    console.log(search_word);
+
+    url = "http://localhost:5000/tmdb/" + search_word;
+
 
     const [data, setData] = useState([]);
 
@@ -44,7 +60,7 @@ const CardHolder = (props) => {
 
     return (
         <React.Fragment>
-            <h1 className={classes.title}>Trending {props.children} </h1>
+            <h1 className={classes.title}>{props.children} </h1>
             <Carousel breakPoints={breakPoints} >
                 {data.map((item) =>
                     <Card key={item.id}> {item} </Card>
