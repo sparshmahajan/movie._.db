@@ -64,7 +64,7 @@ const CardHolder = (props) => {
             }
         };
         fetchData();
-    }, [search_word, props.title, params.name]);
+    }, [props.title, params.name]);
 
     return (
         <React.Fragment>
