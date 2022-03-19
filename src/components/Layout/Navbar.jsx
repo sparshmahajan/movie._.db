@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Navbar.module.css';
 import Search_bar from './Search_bar';
-import Button from './Button';
+import Button from '../UI/Button';
 
 const Navbar = () => {
     return (

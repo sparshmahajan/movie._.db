@@ -20,37 +20,33 @@ let url = "http://localhost:5000/tmdb/";
 
 const CardHolder = (props) => {
 
-    if (props.children === 'trending movies') {
-        search_word = 'trending_movie';
-    } else if (props.children === 'trending tv shows') {
-        search_word = 'trending_tv';
-    } else if (props.children === 'latest movies') {
-        search_word = 'popular_movie';
-    } else if (props.children === 'latest tv shows') {
-        search_word = 'popular_tv';
-    } else if (props.children === 'popular movies') {
-        search_word = 'popular_movie';
-    } else if (props.children === 'popular tv shows') {
-        search_word = 'popular_tv';
-    } else if (props.children === 'top rated movies') {
-        search_word = 'top_rated_movie';
-    } else if (props.children === 'top rated tv shows') {
-        search_word = 'top_rated_tv';
-    } else if (props.children === 'upcoming movies') {
-        search_word = 'upcoming_movie';
-    } else if (props.children === 'on the air tv shows') {
-        search_word = 'on_the_air';
-    }
-
-
-    console.log(search_word);
-
-    url = "http://localhost:5000/tmdb/" + search_word;
-
-
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        if (props.title === 'trending movies') {
+            search_word = 'trending_movie';
+        } else if (props.title === 'trending tv shows') {
+            search_word = 'trending_tv';
+        } else if (props.title === 'latest movies') {
+            search_word = 'popular_movie';
+        } else if (props.title === 'latest tv shows') {
+            search_word = 'popular_tv';
+        } else if (props.title === 'popular movies') {
+            search_word = 'popular_movie';
+        } else if (props.title === 'popular tv shows') {
+            search_word = 'popular_tv';
+        } else if (props.title === 'top rated movies') {
+            search_word = 'top_rated_movie';
+        } else if (props.title === 'top rated tv shows') {
+            search_word = 'top_rated_tv';
+        } else if (props.title === 'upcoming movies') {
+            search_word = 'upcoming_movie';
+        } else if (props.title === 'on the air tv shows') {
+            search_word = 'on_the_air';
+        }
+
+        url = "http://localhost:5000/tmdb/" + search_word;
+
         const fetchData = async () => {
             const response = await axios.get(url);
             try {
@@ -61,14 +57,14 @@ const CardHolder = (props) => {
             }
         };
         fetchData();
-    }, []);
+    }, [props.title]);
 
     return (
         <React.Fragment>
-            <h1 className={classes.title}>{props.children} </h1>
+            <h1 className={classes.title}>{props.title} </h1>
             <Carousel breakPoints={breakPoints} >
                 {data.map((item) =>
-                    <Card key={item.id}> {item} </Card>
+                    <Card key={item.id} item={item} type={props.type} />
                 )}
             </Carousel>
         </React.Fragment>

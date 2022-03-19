@@ -1,13 +1,12 @@
 import classes from './Card.module.css';
 
 const Card = (props) => {
-
-    const media_type = props.children[1].media_type;
-    const title = media_type === "movie" ? props.children[1].title : props.children[1].name;
-    const poster_path = props.children[1].poster_path;
-    const vote_average = props.children[1].vote_average;
-    const release_date = media_type === "movie" ? props.children[1].release_date : props.children[1].first_air_date;
-    const language = props.children[1].original_language;
+    const media_type = props.type;
+    const title = media_type === "movie" ? props.item.title : props.item.name;
+    const poster_path = props.item.poster_path;
+    const vote_average = props.item.vote_average;
+    const release_date = media_type === "movie" ? props.item.release_date : props.item.first_air_date;
+    const language = props.item.original_language;
 
 
     return (
