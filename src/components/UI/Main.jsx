@@ -1,11 +1,9 @@
 import React, { Fragment } from "react";
-import Navbar from "../Layout/Navbar";
 import CardHolder from "./CardHolder";
 
-const Main = () => {
+const Main = (props) => {
     return (
         <Fragment>
-            <Navbar />
             <CardHolder title='trending movies' type='movie' />
             <CardHolder title='trending tv shows' type='tv' />
             <CardHolder title='latest movies' type='movie' />
@@ -15,7 +13,7 @@ const Main = () => {
             <CardHolder title='top rated movies' type='movie' />
             <CardHolder title='top rated tv shows' type='tv' />
             <CardHolder title='upcoming movies' type='movie' />
-            <CardHolder title='on the air tv shows' type='tv' />
+            <CardHolder title='on the air tv shows' type='tv' searchData={props.searchData} />
         </Fragment>
     );
 };

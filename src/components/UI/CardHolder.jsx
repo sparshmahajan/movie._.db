@@ -3,6 +3,7 @@ import Card from "./Card";
 import axios from 'axios';
 import Carousel from "react-elastic-carousel";
 import classes from "./CardHolder.module.css";
+import { useParams } from 'react-router-dom';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -19,8 +20,10 @@ let search_word = 'trending_movie';
 let url = "http://localhost:5000/tmdb/";
 
 const CardHolder = (props) => {
+    const params = useParams();
 
     const [data, setData] = useState([]);
+    const [isSearch, setIsSearch] = useState(false);
 
     useEffect(() => {
         if (props.title === 'trending movies') {
@@ -43,11 +46,15 @@ const CardHolder = (props) => {
             search_word = 'upcoming_movie';
         } else if (props.title === 'on the air tv shows') {
             search_word = 'on_the_air';
+        } else {
+            search_word = 'search/' + params.name;
+            setIsSearch(true);
         }
 
         url = "http://localhost:5000/tmdb/" + search_word;
 
         const fetchData = async () => {
+            console.log(url);
             const response = await axios.get(url);
             try {
                 setData(response.data);
@@ -57,11 +64,11 @@ const CardHolder = (props) => {
             }
         };
         fetchData();
-    }, [props.title]);
+    }, [search_word, props.title, params.name]);
 
     return (
         <React.Fragment>
-            <h1 className={classes.title}>{props.title} </h1>
+            <h1 className={classes.title}>{props.title} {isSearch && params.name} </h1>
             <Carousel breakPoints={breakPoints} >
                 {data.map((item) =>
                     <Card key={item.id} item={item} type={props.type} />
