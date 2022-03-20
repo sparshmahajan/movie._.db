@@ -4,7 +4,6 @@ import axios from 'axios';
 import Carousel from "react-elastic-carousel";
 import classes from "./CardHolder.module.css";
 import { useParams } from 'react-router-dom';
-import Navbar from '../Layout/Navbar';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -56,7 +55,6 @@ const CardHolder = (props) => {
         url = "http://localhost:5000/tmdb/" + search_word;
 
         const fetchData = async () => {
-            console.log(url);
             const response = await axios.get(url);
             try {
                 setData(response.data);

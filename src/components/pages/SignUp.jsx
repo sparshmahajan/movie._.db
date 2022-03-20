@@ -1,24 +1,46 @@
-import { useState } from "react";
+import { useRef } from "react";
 import FormInput from "../UI/FormInput";
 import CustomButton from "../UI/CustomButton";
 import classes from "./SignUp.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const SignUp = () => {
 
-    const [formData, setFormData] = useState({});
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const confirmPasswordRef = useRef();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        const body = {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value
+        };
+        const fetchData = async () => {
+            try {
+                const response = await axios.post("http://localhost:5000/user/signin", body);
+                alert(response.data.message);
+                navigate("/signin");
+            } catch (error) {
+                console.log(error);
+                const error_msg = error.response.data.message;
+                alert(error_msg);
+            }
+        };
+        fetchData();
     };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
 
     return (
         <div className={classes.center}>
@@ -28,34 +50,34 @@ const SignUp = () => {
                     <FormInput
                         name="displayName"
                         type="text"
-                        handleChange={handleChange}
                         label="Display Name"
+                        Ref={nameRef}
                         required
                     />
                     <FormInput
                         name="email"
                         type="email"
-                        handleChange={handleChange}
                         label="Email"
+                        Ref={emailRef}
                         required
                     />
                     <FormInput
                         name="password"
                         type="password"
-                        handleChange={handleChange}
                         label="Password"
+                        Ref={passwordRef}
                         required
                     />
                     <FormInput
                         name="confirmPassword"
                         type="password"
-                        handleChange={handleChange}
                         label="Confirm Password"
+                        Ref={confirmPasswordRef}
                         required
                     />
                     <CustomButton type="submit">Sign up</CustomButton>
                 </form>
-                <p>Already have an account ? <Link to="/sign_in" className={classes.link}>Sign in</Link></p>
+                <p>Already have an account ? <Link to="/signin" className={classes.link}>Sign in</Link></p>
             </div>
         </div>
 

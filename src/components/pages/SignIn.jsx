@@ -1,22 +1,37 @@
-import { useState } from "react";
+import { useRef } from "react";
 import FormInput from "../UI/FormInput";
 import CustomButton from "../UI/CustomButton";
 import classes from './SignIn.module.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const SignIn = (props) => {
 
-    const [formData, setFormData] = useState({});
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-    };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const body = {
+            email: emailRef.current.value,
+            password: passwordRef.current.value
+        };
+
+        const fetchData = async () => {
+            try {
+                const response = await axios.post("http://localhost:5000/user/signin", body);
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+                const error_msg = error.response.data.message;
+                alert(error_msg);
+            }
+        }
+        fetchData();
     };
 
 
@@ -29,23 +44,23 @@ const SignIn = (props) => {
                         name="email"
                         type="email"
                         value={props.email}
-                        handleChange={handleChange}
                         label="Email"
+                        Ref={emailRef}
                         required
                     />
                     <FormInput
                         name="password"
                         type="password"
                         value={props.password}
-                        handleChange={handleChange}
                         label="Password"
+                        Ref={passwordRef}
                         required
                     />
                     <div className="buttons">
                         <CustomButton type="submit">Sign in</CustomButton>
                     </div>
                 </form>
-                <p>Don't have an account ? <Link to="/sign_up" className={classes.link} >Sign up</Link></p>
+                <p>Don't have an account ? <Link to="/signup" className={classes.link} >Sign up</Link></p>
             </div>
         </div>
     );

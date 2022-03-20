@@ -5,6 +5,7 @@ import Main from './components/UI/Main';
 import CommonPage from './components/pages/CommonPage';
 import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
+import ErrorPage from './components/pages/ErrorPage';
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
           <Route path='/upcoming_movies' element={<CommonPage title='upcoming movies' type='movie' />} />
           <Route path='/on_the_air' element={<CommonPage title='on the air tv shows' type='tv' />} />
           <Route path='/search/:name' element={<CommonPage title='search results for ' />} />
-          <Route path='/sign_in' element={<SignIn />} />
-          <Route path='/sign_up' element={<SignUp />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </Fragment>

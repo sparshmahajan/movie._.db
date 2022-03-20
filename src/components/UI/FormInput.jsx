@@ -11,6 +11,7 @@ const FormInput = (props) => {
                 value={props.value}
                 onChange={props.handleChange}
                 placeholder={props.label}
+                ref={props.Ref}
                 required
             />
         </div>
