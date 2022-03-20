@@ -11,7 +11,7 @@ const Card = (props) => {
 
     return (
         <div className={classes.card}>
-            <img src={"https://image.tmdb.org/t/p/original" + poster_path} alt="Not found" className={classes.poster} />
+            <img src={"https://image.tmdb.org/t/p/original" + poster_path} className={classes.poster} />
             <ul className={classes.card_content}>
                 <li id={classes.title}>{title}</li>
                 <li>Language : {language}</li>

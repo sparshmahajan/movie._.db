@@ -1,8 +1,17 @@
 import classes from './Button.module.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Button = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/sign_in');
+    }
+
     return (
-        <button className={classes.button}>Sign In</button>
+        <button className={classes.button} onClick={handleClick} >Sign In</button>
     );
 }
 

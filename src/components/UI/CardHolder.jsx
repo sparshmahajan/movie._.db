@@ -4,6 +4,7 @@ import axios from 'axios';
 import Carousel from "react-elastic-carousel";
 import classes from "./CardHolder.module.css";
 import { useParams } from 'react-router-dom';
+import Navbar from '../Layout/Navbar';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -48,6 +49,7 @@ const CardHolder = (props) => {
             search_word = 'on_the_air';
         } else {
             search_word = 'search/' + params.name;
+            console.log(search_word);
             setIsSearch(true);
         }
 
