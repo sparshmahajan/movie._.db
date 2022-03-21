@@ -4,27 +4,32 @@ import CustomButton from "../UI/CustomButton";
 import classes from './SignIn.module.css';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { login } from "../store/AuthSlice";
+import { useDispatch } from "react-redux";
 
 
 const SignIn = (props) => {
-
     const emailRef = useRef();
     const passwordRef = useRef();
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const body = {
             email: emailRef.current.value,
             password: passwordRef.current.value
         };
 
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
+
         const fetchData = async () => {
             try {
                 const response = await axios.post("http://localhost:5000/user/signin", body, { withCredentials: true });
-                console.log(response);
+                dispatch(login());
+                navigate("/");
                 alert(response.data.message);
             } catch (error) {
                 console.log(error);
@@ -34,7 +39,6 @@ const SignIn = (props) => {
         }
         fetchData();
     };
-
 
     return (
         <div className={classes.center}>
