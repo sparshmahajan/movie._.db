@@ -23,8 +23,9 @@ const SignIn = (props) => {
 
         const fetchData = async () => {
             try {
-                const response = await axios.post("http://localhost:5000/user/signin", body);
+                const response = await axios.post("http://localhost:5000/user/signin", body, { withCredentials: true });
                 console.log(response);
+                alert(response.data.message);
             } catch (error) {
                 console.log(error);
                 const error_msg = error.response.data.message;

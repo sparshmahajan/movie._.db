@@ -30,7 +30,7 @@ const SignUp = () => {
         };
         const fetchData = async () => {
             try {
-                const response = await axios.post("http://localhost:5000/user/signin", body);
+                const response = await axios.post("http://localhost:5000/user/signup", body);
                 alert(response.data.message);
                 navigate("/signin");
             } catch (error) {
