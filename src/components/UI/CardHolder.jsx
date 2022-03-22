@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 350, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 550, itemsToShow: 3, itemsToScroll: 3 },
+    { width: 600, itemsToShow: 3, itemsToScroll: 3 },
     { width: 768, itemsToShow: 3, itemsToScroll: 3 },
     { width: 900, itemsToShow: 4, itemsToScroll: 3 },
     { width: 1200, itemsToShow: 5, itemsToScroll: 5 },

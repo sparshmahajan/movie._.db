@@ -30,3 +30,12 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+@media screen and (max-width: 900px){
+    .navbar_brand{
+        font-size: 1.5rem;
+    }
+    .navbar_item{
+        font-size: 1rem;
+    }
+}

@@ -13,6 +13,7 @@ const Navbar = () => {
         <nav className={classes.navbar}>
             <div className={classes.navbar_brand}>MOVIES._.DB</div>
             <SearchBar />
+            <Button title='My Watchlist' />
             {!isAuthenticated && <Button title="Sign In" />}
             {isAuthenticated && <Button title="Sign Out" />}
         </nav>

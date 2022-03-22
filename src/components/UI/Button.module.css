@@ -1,8 +1,8 @@
 .button{
     background-color: rgba(248, 69, 159, 0.3);
     border: none;
-    color: white;
-    padding: 15px 32px;
+    color: #ffffff;
+    padding: 0.7rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
