@@ -1,13 +1,15 @@
 import { genre_movie, genre_tv } from '../../constants/genre';
+import { useNavigate } from 'react-router-dom';
 import classes from './Card.module.css';
 
 const Card = (props) => {
     const media_type = props.type || props.item.media_type;
-    const title = media_type === "movie" ? props.item.title : props.item.name;
+    const title = props.item.title || props.item.name;
     const poster_path = props.item.poster_path;
     const vote_average = props.item.vote_average;
-    const release_date = media_type === "movie" ? props.item.release_date : props.item.first_air_date;
+    const release_date = props.item.release_date || props.item.first_air_date;
     const language = props.item.original_language;
+    const id = props.item.id;
 
     const genres = props.item.genre_ids.map((id) => {
         if (media_type === "movie") {
@@ -18,10 +20,10 @@ const Card = (props) => {
 
     });
 
+    const navigate = useNavigate();
 
     const clickHandler = () => {
-        console.log(props.item.id);
-        console.log(genres);
+        navigate(`/details_${media_type}/${id}`, { state: genres });
     };
 
     return (

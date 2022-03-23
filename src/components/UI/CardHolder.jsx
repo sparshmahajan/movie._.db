@@ -25,6 +25,7 @@ const CardHolder = (props) => {
     const [data, setData] = useState([]);
     const [isSearch, setIsSearch] = useState(false);
 
+
     useEffect(() => {
         if (props.title === 'trending movies') {
             search_word = 'trending_movie';
@@ -46,9 +47,16 @@ const CardHolder = (props) => {
             search_word = 'upcoming_movie';
         } else if (props.title === 'on the air tv shows') {
             search_word = 'on_the_air';
+        } else if (props.title === 'Similar Movies') {
+            search_word = 'similar_movies/' + props.id;
+        } else if (props.title === 'Similar Tv Shows') {
+            search_word = 'similar_tv/' + props.id;
+        } else if (props.title === 'Recommended Movies') {
+            search_word = 'recommended_movies/' + props.id;
+        } else if (props.title === 'Recommended Tv Shows') {
+            search_word = 'recommended_tv/' + props.id;
         } else {
             search_word = 'search/' + params.name;
-            console.log(search_word);
             setIsSearch(true);
         }
 
