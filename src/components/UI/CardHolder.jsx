@@ -72,7 +72,7 @@ const CardHolder = (props) => {
             }
         };
         fetchData();
-    }, [props.title, params.name]);
+    }, [props.title, params.name, props.id]);
 
     return (
         <React.Fragment>
