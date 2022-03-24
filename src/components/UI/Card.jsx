@@ -23,7 +23,7 @@ const Card = (props) => {
     const navigate = useNavigate();
 
     const clickHandler = () => {
-        navigate(`/details_${media_type}/${id}`, { state: genres });
+        navigate(`/details_${media_type}/${id}`, { state: { genres: genres, media_type: media_type } });
     };
 
     return (
@@ -33,7 +33,8 @@ const Card = (props) => {
                 <li id={classes.title}>{title}</li>
                 <li>Language : {language}</li>
                 <li>Genres : {genres.join(", ")} </li>
-                <li>Release Date : {release_date}</li>
+                {media_type == 'movie' && <li >Release Date : {release_date}</li>}
+                {media_type == 'tv' && <li >First Air Date : {release_date}</li>}
                 <li> Ratings : {vote_average}</li>
                 <li>Type : {media_type}</li>
             </ul>

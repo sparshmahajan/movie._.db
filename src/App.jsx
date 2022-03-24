@@ -4,7 +4,7 @@ import Main from './components/UI/Main';
 import CommonPage from './components/pages/CommonPage';
 import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
-import Details_movie from './components/UI/Details_movie';
+import Details from './components/UI/Details';
 import ErrorPage from './components/pages/ErrorPage';
 import CardHolder from './components/UI/CardHolder';
 
@@ -26,7 +26,8 @@ function App() {
         <Route path='/search/:name' element={<CommonPage title='search results for ' />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/details_movie/:id' element={<Details_movie />} />
+        <Route path='/details_movie/:id' element={<Details />} />
+        <Route path='/details_tv/:id' element={<Details />} />
         <Route path='/similar_movie/:id' element={<CardHolder title='Similar Movies' type='movie' />} />
         <Route path='/similar_tv/:id' element={<CardHolder title='Similar Tv Shows' type='tv' />} />
         <Route path='/recommended_movie/:id' element={<CardHolder title='Recommended Movies' type='movie' />} />
