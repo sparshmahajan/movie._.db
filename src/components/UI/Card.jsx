@@ -1,12 +1,12 @@
 import { genre_movie, genre_tv } from '../../constants/genre';
 import { useNavigate } from 'react-router-dom';
+import poster_error from '../../assets/images/poster_error.jpg';
 import classes from './Card.module.css';
 
 const Card = (props) => {
     const media_type = props.type || props.item.media_type;
     const title = props.item.title || props.item.name;
     const poster_path = props.item.poster_path;
-    const vote_average = props.item.vote_average;
     const release_date = props.item.release_date || props.item.first_air_date;
     const language = props.item.original_language;
     const id = props.item.id;
@@ -26,16 +26,19 @@ const Card = (props) => {
         navigate(`/details_${media_type}/${id}`, { state: { genres: genres, media_type: media_type } });
     };
 
+    const errorHandler = (e) => {
+        e.target.src = poster_error;
+    };
+
     return (
         <div className={classes.card} onClick={clickHandler}>
-            <img src={"https://image.tmdb.org/t/p/original" + poster_path} className={classes.poster} />
+            <img src={`https://image.tmdb.org/t/p/original${poster_path}`} alt='' onErrorCapture={errorHandler} className={classes.poster} />
             <ul className={classes.card_content}>
                 <li id={classes.title}>{title}</li>
                 <li>Language : {language}</li>
                 <li>Genres : {genres.join(", ")} </li>
                 {media_type === 'movie' && <li >Release Date : {release_date}</li>}
                 {media_type === 'tv' && <li >First Air Date : {release_date}</li>}
-                <li> Ratings : {vote_average}</li>
                 <li>Type : {media_type}</li>
             </ul>
         </div>);
