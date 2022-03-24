@@ -50,18 +50,18 @@ const Details = () => {
                 <div className={classes.details_container}>
                     <li className={classes.title}>{details.title || details.name}</li>
                     <li ><strong>GENRES : </strong>{genres.join(", ")}</li>
-                    {media_type == 'movie' && <li ><strong>RELEASE DATE :</strong> {details.release_date}</li>}
-                    {media_type == 'tv' && <li ><strong>FIRST AIR DATE :</strong> {details.first_air_date}</li>}
-                    {media_type == 'tv' && <li ><strong>LATEST AIR DATE :</strong> {details.last_air_date}</li>}
-                    {media_type == 'tv' && <li ><strong>TOTAL SEASONS :</strong> {details.number_of_seasons}</li>}
-                    {media_type == 'tv' && <li ><strong>TOTAL EPISODES :</strong> {details.number_of_episodes}</li>}
+                    {media_type === 'movie' && <li ><strong>RELEASE DATE :</strong> {details.release_date}</li>}
+                    {media_type === 'tv' && <li ><strong>FIRST AIR DATE :</strong> {details.first_air_date}</li>}
+                    {media_type === 'tv' && <li ><strong>LATEST AIR DATE :</strong> {details.last_air_date}</li>}
+                    {media_type === 'tv' && <li ><strong>TOTAL SEASONS :</strong> {details.number_of_seasons}</li>}
+                    {media_type === 'tv' && <li ><strong>TOTAL EPISODES :</strong> {details.number_of_episodes}</li>}
                     <li ><strong>LANGUAGE :</strong> {details.original_language}</li>
                     <li ><strong>RATINGS :</strong> {details.vote_average}</li>
                     <li ><strong>TYPE :</strong>{media_type}</li>
                     <li ><strong>STATUS :</strong> {details.status}</li>
                     <li ><strong>TAGLINE :</strong> {details.tagline}</li>
-                    {media_type == 'movie' && <li ><strong>RUNTIME :</strong> {details.runtime} minutes</li>}
-                    {media_type == 'tv' && <li ><strong>EPISODE RUNTIME :</strong> {details.episode_run_time} minutes</li>}
+                    {media_type === 'movie' && <li ><strong>RUNTIME :</strong> {details.runtime} minutes</li>}
+                    {media_type === 'tv' && <li ><strong>EPISODE RUNTIME :</strong> {details.episode_run_time} minutes</li>}
                     <li ><strong>OVERVIEW : </strong>{details.overview}</li>
                     {details.homepage && <li ><strong>HOMEPAGE :</strong> <a href={details.homepage}>{details.homepage} </a> </li>}
                 </div>

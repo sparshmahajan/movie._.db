@@ -33,8 +33,8 @@ const Card = (props) => {
                 <li id={classes.title}>{title}</li>
                 <li>Language : {language}</li>
                 <li>Genres : {genres.join(", ")} </li>
-                {media_type == 'movie' && <li >Release Date : {release_date}</li>}
-                {media_type == 'tv' && <li >First Air Date : {release_date}</li>}
+                {media_type === 'movie' && <li >Release Date : {release_date}</li>}
+                {media_type === 'tv' && <li >First Air Date : {release_date}</li>}
                 <li> Ratings : {vote_average}</li>
                 <li>Type : {media_type}</li>
             </ul>
