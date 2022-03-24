@@ -22,11 +22,10 @@
 }
 .center{
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    height: 95vh;
+    width: 95vw;
     justify-content: center;
     align-items: center;
-    border: 5px solid rebeccapurple;
 }
 .link{
     color: #fff;
@@ -36,9 +35,11 @@
 
 @media screen and (max-width: 600px){
     .sign_in{
-        width: 80%;
+        width: 85%;
+        border-radius: 10px;
     }
     .sign_up{
-        width: 80%;
+        width: 85%;
+        border-radius: 10px;
     }
 }
