@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Card from "./Card";
 import axios from 'axios';
 import Carousel from "react-elastic-carousel";
 import classes from "./CardHolder.module.css";
 import { useParams } from 'react-router-dom';
+import LoadingSpinner from './LoadingSpinner';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -13,7 +14,6 @@ const breakPoints = [
     { width: 900, itemsToShow: 4, itemsToScroll: 3 },
     { width: 1200, itemsToShow: 5, itemsToScroll: 5 },
     { width: 1400, itemsToShow: 7, itemsToScroll: 7 },
-    { width: 1600, itemsToShow: 9, itemsToScroll: 9 },
 ];
 
 let search_word = 'trending_movie';
@@ -23,6 +23,7 @@ const CardHolder = (props) => {
     const params = useParams();
 
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [isSearch, setIsSearch] = useState(false);
 
 
@@ -66,23 +67,35 @@ const CardHolder = (props) => {
             const response = await axios.get(url);
             try {
                 setData(response.data);
+                setLoading(false);
             } catch (error) {
                 console.log(error);
                 setData([]);
             }
         };
         fetchData();
+
     }, [props.title, params.name, props.id]);
 
-    return (
-        <React.Fragment>
+    const FullCarousel = (
+        <Fragment>
             <h1 className={classes.title}>{props.title} {isSearch && params.name} </h1>
-            <Carousel breakPoints={breakPoints} >
-                {data.map((item) =>
-                    <Card key={item.id} item={item} type={props.type} />
-                )}
+            <Carousel breakPoints={breakPoints}>
+                {data.map((item) => {
+                    return (
+                        <Card key={item.id} item={item} type={props.type} />
+                    )
+                })}
             </Carousel>
-        </React.Fragment>
+        </Fragment>
+    );
+
+    return (
+        <Fragment>
+            {loading && <LoadingSpinner />}
+            {data.length !== 0 && !loading && FullCarousel}
+
+        </Fragment>
     );
 }
 

@@ -1,6 +1,17 @@
 .sign_in{
     width: 30%;
-    min-height: 70%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #000;
+    border-radius: 0 20% 0 20%;
+}
+.sign_up{
+    width: 30%;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +22,7 @@
 }
 .center{
     display: flex;
-    height: 98vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 }

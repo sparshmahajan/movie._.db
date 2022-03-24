@@ -1,6 +1,6 @@
 .search{
     display: flex;
-    width: 40%;
+    width: 30%;
 }
 .search_bar{
   display: flex;
@@ -30,4 +30,10 @@
     width: 24px;
     height: 24px;
     color: #000;
+}
+
+@media screen and (max-width: 900px){
+    .search_bar{
+        height: 30px;
+    }
 }
