@@ -11,19 +11,11 @@ const Card = (props) => {
     const language = props.item.original_language;
     const id = props.item.id;
 
-    const genres = props.item.genre_ids.map((id) => {
-        if (media_type === "movie") {
-            return genre_movie[id];
-        } else {
-            return genre_tv[id];
-        }
-
-    });
 
     const navigate = useNavigate();
 
     const clickHandler = () => {
-        navigate(`/details_${media_type}/${id}`, { state: { genres: genres, media_type: media_type } });
+        navigate(`/details_${media_type}/${id}`);
     };
 
     const errorHandler = (e) => {
@@ -36,7 +28,14 @@ const Card = (props) => {
             <ul className={classes.card_content}>
                 <li id={classes.title}>{title}</li>
                 <li>Language : {language}</li>
-                <li>Genres : {genres.join(", ")} </li>
+                {props.item.genre_ids && <li>Genres : {props.item.genre_ids.map((id) => {
+                    if (media_type === "movie") {
+                        return genre_movie[id];
+                    } else {
+                        return genre_tv[id];
+                    }
+
+                }).join(", ")} </li>}
                 {media_type === 'movie' && <li >Release Date : {release_date}</li>}
                 {media_type === 'tv' && <li >First Air Date : {release_date}</li>}
                 <li>Type : {media_type}</li>

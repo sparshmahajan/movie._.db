@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 100%;
     padding: 2 rem;
+
     background: #000;
     color: #fff;
 }
@@ -12,7 +13,7 @@
 }
 .poster{
     width: 45vw;
-    height: 99vh;
+    height: 80vh;
     margin:0 2.5vw;
     padding: 1rem;
 } 
@@ -28,10 +29,10 @@
     list-style-type: none;
 }
 .details_container > li{
+    padding: 0.3rem 2rem;
     margin : 0.5rem 0;
 }
 .details_container > li > span{
-    margin-right: 1rem;
     display: block;
 }
 
@@ -44,13 +45,19 @@
     .details{
         flex-direction: column;
     }
+    .poster_container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .poster{
-        width: 100vw;
+        width: 90vw;
         height: 50vh;
         margin: 0;
-        padding: 1rem 0; 
+        padding: 1rem 0;
     }
     .details_container{
         padding: 1rem 0;
+        margin: 0;
     }
 }

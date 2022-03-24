@@ -8,8 +8,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
-    { width: 350, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 600, itemsToShow: 3, itemsToScroll: 3 },
+    { width: 450, itemsToShow: 2, itemsToScroll: 2 },
     { width: 768, itemsToShow: 3, itemsToScroll: 3 },
     { width: 900, itemsToShow: 4, itemsToScroll: 3 },
     { width: 1200, itemsToShow: 5, itemsToScroll: 5 },
@@ -79,7 +78,7 @@ const CardHolder = (props) => {
 
     const FullCarousel = (
         <Fragment>
-            <h1 className={classes.title}>{props.title} {isSearch && params.name} </h1>
+            <h1 className={classes.title}>{props.title} {isSearch && " " + params.name} </h1>
             <Carousel breakPoints={breakPoints}>
                 {data.map((item) => {
                     return (
