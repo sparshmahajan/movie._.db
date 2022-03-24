@@ -1,5 +1,5 @@
 .sign_in{
-    width: 30%;
+    width: 450px;
     min-height: 50vh;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     border-radius: 0 20% 0 20%;
 }
 .sign_up{
-    width: 30%;
+    width: 450px;
     min-height: 50vh;
     display: flex;
     flex-direction: column;
@@ -23,11 +23,22 @@
 .center{
     display: flex;
     height: 100vh;
+    width: 100vw;
     justify-content: center;
     align-items: center;
+    border: 5px solid rebeccapurple;
 }
 .link{
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+}
+
+@media screen and (max-width: 600px){
+    .sign_in{
+        width: 80%;
+    }
+    .sign_up{
+        width: 80%;
+    }
 }
