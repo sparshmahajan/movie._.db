@@ -1,16 +1,20 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Details.module.css";
-import { useParams, useLocation } from "react-router-dom";
-import CardHolder from "./CardHolder";
-import WatchListButton from "./WatchListButton";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import CardHolder from "../UI/CardHolder";
+import WatchListButton from "../UI/WatchListButton";
 import poster_error from "../../assets/images/poster_error.jpg";
 import Navbar from "../Layout/Navbar";
+import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 
 const Details = () => {
     const params = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
+    const loggedIn = useSelector(state => state.auth.isLoggedIn);
 
     const search_id = params.id;
 
@@ -50,7 +54,28 @@ const Details = () => {
         title = "Tv Shows";
     }
 
-
+    const addToWatchList = () => {
+        if (loggedIn) {
+            const body = {
+                id: search_id,
+                type: media_type
+            };
+            const url = `http://localhost:5000/user/add`;
+            const addData = async () => {
+                const token = Cookies.get("token");
+                try {
+                    const response = await axios.post(url, body, { headers: { "Authorization": `Bearer ${token}` } });
+                    alert("Added to watchlist");
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            addData();
+        } else {
+            alert("You need to be logged in to add to watchlist");
+            navigate("/signin");
+        }
+    }
 
 
     return (
@@ -64,7 +89,7 @@ const Details = () => {
                             <img src={`https://image.tmdb.org/t/p/original${details.poster_path}`} className={classes.poster} alt="poster" onErrorCapture={errorHandler} />
                         </div>
                         <div className={classes.details_container}>
-                            <WatchListButton title='Add To WatchList' />
+                            <WatchListButton title='Add To WatchList' onClick={addToWatchList} />
 
                             <li className={classes.title}>{details.title || details.name}</li>
                             {details.genres && <li ><strong>GENRES : </strong>{details.genres.map(genre => genre.name).join(", ")} </li>}

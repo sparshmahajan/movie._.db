@@ -9,7 +9,7 @@ function App() {
   const CommonPage = React.lazy(() => import('./components/pages/CommonPage'));
   const SignIn = React.lazy(() => import('./components/pages/SignIn'));
   const SignUp = React.lazy(() => import('./components/pages/SignUp'));
-  const Details = React.lazy(() => import('./components/UI/Details'));
+  const Details = React.lazy(() => import('./components/pages/Details'));
   const ErrorPage = React.lazy(() => import('./components/pages/ErrorPage'));
   const CardHolder = React.lazy(() => import('./components/UI/CardHolder'));
 
