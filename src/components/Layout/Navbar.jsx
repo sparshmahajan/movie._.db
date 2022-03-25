@@ -18,7 +18,7 @@ const Navbar = () => {
         <nav className={classes.navbar}>
             <div className={classes.navbar_brand} onClick={moveToHome} >MOVIES._.DB</div>
             <SearchBar />
-            <Button title='My Watchlist' />
+            <Button title='My WatchList' />
             {!isAuthenticated && <Button title="Sign In" />}
             {isAuthenticated && <Button title="Sign Out" />}
         </nav>

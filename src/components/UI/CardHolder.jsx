@@ -12,15 +12,15 @@ const breakPoints = [
     { width: 768, itemsToShow: 3, itemsToScroll: 3 },
     { width: 900, itemsToShow: 4, itemsToScroll: 3 },
     { width: 1200, itemsToShow: 5, itemsToScroll: 5 },
-    { width: 1400, itemsToShow: 7, itemsToScroll: 7 },
+    { width: 1400, itemsToShow: 6, itemsToScroll: 6 },
 ];
 
 let search_word = 'trending_movie';
-let url = "http://localhost:5000/tmdb/";
+let url = "http://localhost:5000/api/";
 
 const CardHolder = (props) => {
-    const params = useParams();
 
+    const params = useParams();
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isSearch, setIsSearch] = useState(false);
@@ -60,17 +60,17 @@ const CardHolder = (props) => {
             setIsSearch(true);
         }
 
-        url = "http://localhost:5000/tmdb/" + search_word;
+        url = "http://localhost:5000/api/" + search_word;
 
         const fetchData = async () => {
             const response = await axios.get(url);
             try {
                 setData(response.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
                 setData([]);
             }
+            setLoading(false);
         };
         fetchData();
 

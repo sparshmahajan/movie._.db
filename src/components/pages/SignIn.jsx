@@ -30,16 +30,16 @@ const SignIn = (props) => {
 
         const fetchData = async () => {
             try {
-                const response = await axios.post("http://localhost:5000/user/signin", body, { withCredentials: true });
+                const response = await axios.post("http://localhost:5000/api/signin", body, { withCredentials: true });
                 dispatch(login(response.data.movie));
                 toast.success(response.data.message, {
                     position: "top-right",
-                    autoClose: 1000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true
                 });
-                setTimeout(() => navigate("/"), 2000);
+                setTimeout(() => navigate("/"), 3000);
             } catch (error) {
                 console.log(error);
                 const error_msg = error.response.data.message;
@@ -64,7 +64,6 @@ const SignIn = (props) => {
                         <FormInput
                             name="email"
                             type="email"
-                            value={props.email}
                             label="Email"
                             Ref={emailRef}
                             required
@@ -72,7 +71,6 @@ const SignIn = (props) => {
                         <FormInput
                             name="password"
                             type="password"
-                            value={props.password}
                             label="Password"
                             Ref={passwordRef}
                             required

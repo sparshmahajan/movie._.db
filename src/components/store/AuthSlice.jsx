@@ -7,12 +7,12 @@ let initialState = {};
 if (Cookies.get("token")) {
     initialState = {
         isLoggedIn: true,
-        user_data: JSON.parse(localStorage.getItem("movie")) || []
+        user_data: JSON.parse(localStorage.getItem("movie"))
     };
 } else {
     initialState = {
         isLoggedIn: false,
-        user_data: JSON.parse(localStorage.getItem("movie")) || []
+        user_data: JSON.parse(localStorage.getItem("movie"))
     };
 }
 

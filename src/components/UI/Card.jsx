@@ -34,8 +34,8 @@ const Card = (props) => {
                     } else {
                         return genre_tv[id];
                     }
-
-                }).join(", ")} </li>}
+                }).join(", ")}  </li>}
+                {props.item.genres && <li>Genres : {props.item.genres.map((genre) => genre.name).join(", ")}  </li>}
                 {media_type === 'movie' && <li >Release Date : {release_date}</li>}
                 {media_type === 'tv' && <li >First Air Date : {release_date}</li>}
                 <li>Type : {media_type}</li>

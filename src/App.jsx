@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './App.css';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 
@@ -12,6 +13,9 @@ function App() {
   const Details = React.lazy(() => import('./components/pages/Details'));
   const ErrorPage = React.lazy(() => import('./components/pages/ErrorPage'));
   const CardHolder = React.lazy(() => import('./components/UI/CardHolder'));
+  const WatchList = React.lazy(() => import('./components/pages/WatchList'));
+
+  const loggedIn = useSelector(state => state.auth.isLoggedIn);
 
   return (
     <BrowserRouter>
@@ -29,14 +33,16 @@ function App() {
           <Route path='/upcoming_movies' element={<CommonPage title='upcoming movies' type='movie' />} />
           <Route path='/on_the_air' element={<CommonPage title='on the air tv shows' type='tv' />} />
           <Route path='/search/:name' element={<CommonPage title='search results for ' />} />
-          <Route path='/signin' element={<SignIn />} />
-          <Route path='/signup' element={<SignUp />} />
+          {!loggedIn && <Route path='/signin' element={<SignIn />} />}
+          {!loggedIn && <Route path='/signup' element={<SignUp />} />}
           <Route path='/details_movie/:id' element={<Details />} />
           <Route path='/details_tv/:id' element={<Details />} />
           <Route path='/similar_movie/:id' element={<CardHolder title='Similar Movies' type='movie' />} />
           <Route path='/similar_tv/:id' element={<CardHolder title='Similar Tv Shows' type='tv' />} />
           <Route path='/recommended_movie/:id' element={<CardHolder title='Recommended Movies' type='movie' />} />
           <Route path='/recommended_tv/:id' element={<CardHolder title='Recommended Tv Shows' type='tv' />} />
+          {loggedIn && <Route path='/watchlist' element={<WatchList />} />}
+          {!loggedIn && <Route path='/watchlist' element={<SignIn />} />}
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Suspense>
