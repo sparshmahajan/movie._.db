@@ -16,8 +16,6 @@ const Button = (props) => {
             navigate(navigationRoute);
         } else if (props.title === "Sign Out") {
             dispatch(logout());
-            navigationRoute = "/";
-            navigate(navigationRoute);
         }
 
     }

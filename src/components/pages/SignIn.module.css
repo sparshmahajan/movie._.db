@@ -1,17 +1,6 @@
 .sign_in{
-    width: 450px;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    background-color: #000;
-    border-radius: 0 20% 0 20%;
-}
-.sign_up{
-    width: 450px;
-    min-height: 50vh;
+    width: 400px;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,8 +27,10 @@
         width: 85%;
         border-radius: 10px;
     }
-    .sign_up{
-        width: 85%;
-        border-radius: 10px;
+}
+
+@media screen and (min-height : 767px) {
+    .sign_in{
+        min-height: 50vh;
     }
 }

@@ -3,7 +3,6 @@
     flex-direction: row;
     width: 100%;
     padding: 2 rem;
-
     background: #000;
     color: #fff;
 }
@@ -12,8 +11,8 @@
     height: 100%;
 }
 .poster{
-    width: 45vw;
-    height: 80vh;
+    width: 40vw;
+    height: 100vh;
     margin:0 2.5vw;
     padding: 1rem;
 } 

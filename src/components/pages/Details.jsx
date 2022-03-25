@@ -1,25 +1,38 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Details.module.css";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import CardHolder from "../UI/CardHolder";
 import WatchListButton from "../UI/WatchListButton";
 import poster_error from "../../assets/images/poster_error.jpg";
 import Navbar from "../Layout/Navbar";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
-
+import { updateWatchList } from "../store/AuthSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Details = () => {
     const params = useParams();
     const location = useLocation();
-    const navigate = useNavigate();
     const loggedIn = useSelector(state => state.auth.isLoggedIn);
+    const movie = useSelector(state => state.auth.user_data);
+
+    const dispatch = useDispatch();
 
     const search_id = params.id;
-
-    const [details, setDetails] = useState([]);
     const media_type = location.pathname.split("/")[1] === "details_movie" ? "movie" : "tv";
+
+    let initialStateOfWatchList = false;
+
+    for (let index = 0; index < movie.length; index++) {
+        if (movie[index].movie_id === search_id && movie[index].media_type === media_type) {
+            initialStateOfWatchList = true;
+        }
+    }
+
+    const [isAdded, setIsAdded] = useState(initialStateOfWatchList);
+    const [details, setDetails] = useState([]);
 
 
     useEffect(() => {
@@ -40,7 +53,7 @@ const Details = () => {
         });
 
 
-    }, [search_id, media_type]);
+    }, [search_id, media_type, movie]);
 
     const errorHandler = (e) => {
         e.target.src = poster_error;
@@ -54,26 +67,56 @@ const Details = () => {
         title = "Tv Shows";
     }
 
-    const addToWatchList = () => {
+    const WatchListHandler = (event) => {
         if (loggedIn) {
+            let query_word = "";
+            if (event.target.innerText === "Add To WatchList") {
+                query_word = "add";
+                setIsAdded(true);
+            } else {
+                query_word = "remove";
+                setIsAdded(false);
+            }
             const body = {
                 id: search_id,
                 type: media_type
             };
-            const url = `http://localhost:5000/user/add`;
-            const addData = async () => {
+            const url = `http://localhost:5000/user/${query_word}`;
+            const Data = async () => {
                 const token = Cookies.get("token");
                 try {
                     const response = await axios.post(url, body, { headers: { "Authorization": `Bearer ${token}` } });
-                    alert("Added to watchlist");
+                    dispatch(updateWatchList(response.data.movie));
+                    toast.success(response.data.message, {
+                        position: "top-right",
+                        autoClose: 500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 } catch (error) {
                     console.log(error);
+                    toast.error("Error while sending data", {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true
+                    });
                 }
             };
-            addData();
+            Data();
         } else {
-            alert("You need to be logged in to add to watchlist");
-            navigate("/signin");
+            toast.info("You need to be logged in to add to watchlist", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 
@@ -89,8 +132,8 @@ const Details = () => {
                             <img src={`https://image.tmdb.org/t/p/original${details.poster_path}`} className={classes.poster} alt="poster" onErrorCapture={errorHandler} />
                         </div>
                         <div className={classes.details_container}>
-                            <WatchListButton title='Add To WatchList' onClick={addToWatchList} />
-
+                            {!isAdded && <WatchListButton title='Add To WatchList' onClick={WatchListHandler} />}
+                            {isAdded && <WatchListButton title='Remove From WatchList' onClick={WatchListHandler} />}
                             <li className={classes.title}>{details.title || details.name}</li>
                             {details.genres && <li ><strong>GENRES : </strong>{details.genres.map(genre => genre.name).join(", ")} </li>}
                             {media_type === 'movie' && <li ><strong>RELEASE DATE :</strong> {details.release_date}</li>}
@@ -111,8 +154,8 @@ const Details = () => {
                     <CardHolder title={`Similar ${title}`} id={search_id} type={media_type} />
                     <CardHolder title={`Recommended ${title}`} id={search_id} type={media_type} />
                 </Fragment>
-
             }
+            <ToastContainer />
         </Fragment>
     );
 }
