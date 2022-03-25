@@ -31,15 +31,17 @@ const SignIn = (props) => {
         const fetchData = async () => {
             try {
                 const response = await axios.post("http://localhost:5000/api/signin", body, { withCredentials: true });
-                dispatch(login(response.data.movie));
+                setTimeout(() => {
+                    dispatch(login(response.data.movie));
+                }, 3000);
                 toast.success(response.data.message, {
                     position: "top-right",
-                    autoClose: 2000,
+                    autoClose: 1000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true
                 });
-                setTimeout(() => navigate("/"), 3000);
+                setTimeout(() => navigate("/"), 1000);
             } catch (error) {
                 console.log(error);
                 const error_msg = error.response.data.message;
