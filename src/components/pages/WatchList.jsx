@@ -45,7 +45,7 @@ const WatchList = () => {
             id: bodyData.id,
             type: bodyData.media_type
         };
-        const url = `https://moviedb-backend-1.herokuapp.com//api/remove`;
+        const url = `https://moviedb-backend-1.herokuapp.com/api/remove`;
         const Data = async () => {
             const token = Cookies.get("token");
             try {
