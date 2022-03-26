@@ -39,7 +39,7 @@ const WatchListButton = (props) => {
                 id: props.search_id,
                 type: props.media_type
             };
-            const url = `http://localhost:5000/api/${query_word}`;
+            const url = `https://moviedb-backend-1.herokuapp.com/api/${query_word}`;
             const Data = async () => {
                 const token = Cookies.get("token");
                 try {

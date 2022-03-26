@@ -18,7 +18,7 @@ const Details = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/api/search_${media_type}/${search_id}`;
+        const url = `https://moviedb-backend-1.herokuapp.com/api/search_${media_type}/${search_id}`;
         const fetchData = async () => {
             try {
                 const response = await axios.get(url);

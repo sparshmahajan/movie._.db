@@ -26,7 +26,7 @@ const WatchList = () => {
     useEffect(() => {
         const movie_data = JSON.parse(localStorage.getItem('movie'));
         movie_data.map((item) => {
-            const url = "http://localhost:5000/api/search_" + item.media_type + "/" + item.movie_id;
+            const url = "https://moviedb-backend-1.herokuapp.com/api/search_" + item.media_type + "/" + item.movie_id;
             const fetchData = async () => {
                 try {
                     const response = await axios.get(url);
@@ -45,7 +45,7 @@ const WatchList = () => {
             id: bodyData.id,
             type: bodyData.media_type
         };
-        const url = `http://localhost:5000/api/remove`;
+        const url = `https://moviedb-backend-1.herokuapp.com//api/remove`;
         const Data = async () => {
             const token = Cookies.get("token");
             try {

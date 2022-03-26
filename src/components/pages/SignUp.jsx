@@ -32,7 +32,7 @@ const SignUp = () => {
         };
         const fetchData = async () => {
             try {
-                const response = await axios.post("http://localhost:5000/api/signup", body);
+                const response = await axios.post("https://moviedb-backend-1.herokuapp.com/api/signup", body);
                 toast.success(response.data.message, {
                     position: "top-right",
                     autoClose: 1000,

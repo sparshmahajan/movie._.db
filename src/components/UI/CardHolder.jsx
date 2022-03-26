@@ -16,7 +16,7 @@ const breakPoints = [
 ];
 
 let search_word = 'trending_movie';
-let url = "http://localhost:5000/api/";
+let url = "https://moviedb-backend-1.herokuapp.com/api/";
 
 const CardHolder = (props) => {
 
@@ -60,7 +60,7 @@ const CardHolder = (props) => {
             setIsSearch(true);
         }
 
-        url = "http://localhost:5000/api/" + search_word;
+        url = "https://moviedb-backend-1.herokuapp.com/api/" + search_word;
 
         const fetchData = async () => {
             const response = await axios.get(url);
