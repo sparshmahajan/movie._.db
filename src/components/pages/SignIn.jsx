@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { login } from "../store/AuthSlice";
 import { useDispatch } from "react-redux";
+import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,6 +32,7 @@ const SignIn = (props) => {
         const fetchData = async () => {
             try {
                 const response = await axios.post("https://moviedb-backend-1.herokuapp.com/api/signin", body, { withCredentials: true });
+                Cookies.set('token', response.data.token);
                 setTimeout(() => {
                     dispatch(login(response.data.movie));
                 }, 3000);
