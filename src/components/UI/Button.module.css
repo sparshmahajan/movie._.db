@@ -1,4 +1,4 @@
-.button{
+.button {
     background-color: rgba(248, 69, 159, 0.3);
     border: none;
     color: #ffffff;
@@ -14,10 +14,10 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 900px){
-    .button{
+@media screen and (max-width: 900px) {
+    .button {
         font-size: 1rem;
         margin: 2px;
-        padding: 0.3rem;
+        padding: 0.5rem;
     }
 }

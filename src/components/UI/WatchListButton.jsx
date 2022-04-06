@@ -57,7 +57,7 @@ const WatchListButton = (props) => {
                     console.log(error);
                     toast.error("Error while sending data", {
                         position: "top-right",
-                        autoClose: 5000,
+                        autoClose: 2000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: true
@@ -68,7 +68,7 @@ const WatchListButton = (props) => {
         } else {
             toast.info("You need to be logged in to add to watchlist", {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,

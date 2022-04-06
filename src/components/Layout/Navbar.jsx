@@ -1,7 +1,7 @@
-import React from 'react';
 import classes from './Navbar.module.css';
 import SearchBar from './SearchBar';
 import Button from '../UI/Button';
+import Dropdown from '../../assets/images/Dropdown.svg';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,10 +14,14 @@ const Navbar = () => {
         navigate('/');
     }
 
+
     return (
-        <nav className={classes.navbar}>
+        <nav className={classes.navbar} >
             <div className={classes.navbar_brand} onClick={moveToHome} >MOVIES._.DB</div>
             <SearchBar />
+            <button className={classes.dropdown} >
+                <img src={Dropdown} alt="dropdown" className={classes.dropdown_img} />
+            </button>
             <Button title='My WatchList' />
             {!isAuthenticated && <Button title="Sign In" />}
             {isAuthenticated && <Button title="Sign Out" />}

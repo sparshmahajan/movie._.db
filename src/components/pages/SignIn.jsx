@@ -49,7 +49,7 @@ const SignIn = (props) => {
                 const error_msg = error.response.data.message;
                 toast.error(error_msg, {
                     position: toast.POSITION.TOP_RIGHT,
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true
