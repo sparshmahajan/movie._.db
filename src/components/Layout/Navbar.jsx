@@ -15,7 +15,7 @@ const Navbar = () => {
         navigate('/');
     }
 
-    const [visible, setVisible] = useState(window.outerWidth > 670);
+    const [visible, setVisible] = useState(window.outerWidth > 767);
 
 
     const clickHandler = () => {
