@@ -18,7 +18,6 @@ const Navbar = () => {
     const [visible, setVisible] = useState(window.outerWidth > 767);
 
     useEffect(() => {
-        console.log('running');
         const handleResize = () => {
             setVisible(window.outerWidth > 767);
         }
