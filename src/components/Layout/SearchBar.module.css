@@ -38,5 +38,18 @@
     .search_bar {
         height: 30px;
         width: 70%;
+        font-size: small;
+
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search_button {
+        width: 40%;
+    }
+
+    .search_icon {
+        width: 16px;
+        height: 16px;
     }
 }

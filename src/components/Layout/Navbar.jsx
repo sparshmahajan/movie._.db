@@ -19,8 +19,7 @@ const Navbar = () => {
 
 
     const clickHandler = () => {
-        console.log('clicked');
-        setVisible(prevState => !prevState)
+        setVisible(prevState => !prevState);
     }
 
     return (
