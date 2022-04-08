@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 2rem 0;
     font-size: larger;
     text-decoration: none;
     list-style-type: none;
@@ -60,8 +60,8 @@
     }
 
     .poster {
-        width: 90vw;
         height: 50vh;
+        width: 90%;
         margin: 0;
         padding: 1rem 0;
     }
