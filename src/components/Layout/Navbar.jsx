@@ -15,11 +15,11 @@ const Navbar = () => {
         navigate('/');
     }
 
-    const [visible, setVisible] = useState(window.outerWidth > 767);
+    const [visible, setVisible] = useState(window.outerWidth > 750);
 
     useEffect(() => {
         const handleResize = () => {
-            setVisible(window.outerWidth > 767);
+            setVisible(window.outerWidth > 750);
         }
 
         window.addEventListener('resize', handleResize);
