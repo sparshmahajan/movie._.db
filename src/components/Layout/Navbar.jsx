@@ -4,6 +4,7 @@ import Button from '../UI/Button';
 import Dropdown from '../../assets/images/Dropdown.svg';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
 
@@ -14,17 +15,24 @@ const Navbar = () => {
         navigate('/');
     }
 
+    const [visible, setVisible] = useState(window.outerWidth > 670);
+
+
+    const clickHandler = () => {
+        console.log('clicked');
+        setVisible(prevState => !prevState)
+    }
 
     return (
         <nav className={classes.navbar} >
             <div className={classes.navbar_brand} onClick={moveToHome} >MOVIES._.DB</div>
             <SearchBar />
             <button className={classes.dropdown} >
-                <img src={Dropdown} alt="dropdown" className={classes.dropdown_img} />
+                <img src={Dropdown} alt="dropdown" className={classes.dropdown_img} onClick={clickHandler} />
             </button>
-            <Button title='My WatchList' />
-            {!isAuthenticated && <Button title="Sign In" />}
-            {isAuthenticated && <Button title="Sign Out" />}
+            {(visible) && < Button title='My WatchList' />}
+            {!isAuthenticated && (visible) && <Button title="Sign In" />}
+            {isAuthenticated && (visible) && <Button title="Sign Out" />}
         </nav>
     );
 };
