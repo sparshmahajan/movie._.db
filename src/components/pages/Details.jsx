@@ -75,7 +75,6 @@ const Details = () => {
                             {media_type === 'movie' && <li ><strong>RUNTIME : </strong> {details.runtime} minutes</li>}
                             {media_type === 'tv' && details.episode_run_time && <li ><strong>EPISODE RUNTIME : </strong> {details.episode_run_time.sort().join(" - ")} minutes</li>}
                             <li ><strong>OVERVIEW : </strong>{details.overview}</li>
-                            {details.homepage && <li ><strong>HOMEPAGE : </strong> <a href={details.homepage}>{details.homepage} </a> </li>}
                         </div>
                     </div>
                     <CardHolder title={`Similar ${title}`} id={search_id} type={media_type} />
