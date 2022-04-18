@@ -79,13 +79,18 @@ const CardHolder = (props) => {
     const FullCarousel = (
         <Fragment>
             <h1 className={classes.title}>{props.title} {isSearch && " " + params.name} </h1>
-            <Carousel breakPoints={breakPoints}>
-                {data.map((item) => {
-                    return (
-                        <Card key={item.id} item={item} type={props.type} />
-                    )
-                })}
-            </Carousel>
+            {data.length !== 0 &&
+                <Carousel breakPoints={breakPoints}>
+                    {data.map((item) => {
+                        return (
+                            <Card key={item.id} item={item} type={props.type} />
+                        )
+                    })}
+                </Carousel>
+            }
+            {data.length === 0 &&
+                <div >Sorry , No data found for this search.</div>
+            }
         </Fragment>
     );
 
