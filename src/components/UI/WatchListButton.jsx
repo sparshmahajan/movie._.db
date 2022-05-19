@@ -14,7 +14,6 @@ const WatchListButton = (props) => {
     const loggedIn = useSelector(state => state.auth.isLoggedIn);
     const movie = useSelector(state => state.auth.user_data);
 
-
     let initialStateOfWatchList = false;
 
     for (let index = 0; index < movie.length; index++) {
@@ -65,8 +64,8 @@ const WatchListButton = (props) => {
                 }
             };
             Data();
-        } else {
-            toast.info("You need to be logged in to add to watchlist", {
+        } else if (!loggedIn) {
+            toast.warn("You need to be logged in to add to watchlist", {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,

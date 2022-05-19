@@ -2,10 +2,10 @@ import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Details.module.css";
 import { useParams, useLocation } from "react-router-dom";
-import CardHolder from "../UI/CardHolder";
 import WatchListButton from "../UI/WatchListButton";
 import poster_error from "../../assets/images/poster_error.jpg";
 import Navbar from "../Layout/Navbar";
+import PageButton from "../UI/PageButton";
 
 const Details = () => {
     const params = useParams();
@@ -77,8 +77,10 @@ const Details = () => {
                             <li ><strong>OVERVIEW : </strong>{details.overview}</li>
                         </div>
                     </div>
-                    <CardHolder title={`Similar ${title}`} id={search_id} type={media_type} />
-                    <CardHolder title={`Recommended ${title}`} id={search_id} type={media_type} />
+                    <div className={classes.buttonHolder}>
+                        <PageButton title={`Similar ${title}`} id={search_id} type={title} backgroundColor='#7593ea' />
+                        <PageButton title={`Recommended ${title}`} id={search_id} type={title} backgroundColor='#94fef4' />
+                    </div>
                 </Fragment>
             }
         </Fragment>

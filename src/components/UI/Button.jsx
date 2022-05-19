@@ -25,7 +25,7 @@ const Button = (props) => {
             if (isAuthenticated) {
                 navigate("/watchlist");
             } else {
-                toast.info("You need to be logged in to add to watchlist", {
+                toast.warn("You need to be logged in to add to watchlist", {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,

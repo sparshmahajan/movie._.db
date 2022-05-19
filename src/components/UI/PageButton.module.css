@@ -1,24 +1,15 @@
-.button {
+.PageButton {
     background-color: rgba(248, 69, 159, 0.3);
     border: none;
-    color: #ffffff;
-    padding: 0.7rem;
+    padding: 1rem 2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: larger;
     font-weight: 600;
     border-radius: 5px;
-    margin: 5px;
-    margin-right: 10px;
+    margin: 2rem;
     cursor: pointer;
-}
-
-
-@media screen and (max-width: 900px) {
-    .button {
-        font-size: 1rem;
-        margin: 2px;
-        padding: 0.5rem;
-    }
+    text-transform: uppercase;
+    min-width: 300px;
 }

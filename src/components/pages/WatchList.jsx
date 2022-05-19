@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 import Navbar from "../Layout/Navbar";
-import Carousel from "react-elastic-carousel";
 import axios from "axios";
 import Card from "../UI/Card";
 import classes from './WatchList.module.css';
@@ -9,14 +8,6 @@ import Cookies from 'js-cookie';
 import { updateWatchList } from "../store/AuthSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 450, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 3, itemsToScroll: 3 },
-    { width: 900, itemsToShow: 3, itemsToScroll: 3 },
-    { width: 1200, itemsToShow: 4, itemsToScroll: 4 },
-];
 
 const WatchList = () => {
 
@@ -80,7 +71,7 @@ const WatchList = () => {
         <Fragment>
             <Navbar />
             <h1 className={classes.title} >My WatchList</h1>
-            <Carousel breakPoints={breakPoints}>
+            <div className={classes.card_holder}>
                 {data.map((item) => {
                     return (
                         <div className={classes.oneElement} key={item.id}>
@@ -89,7 +80,7 @@ const WatchList = () => {
                         </div>
                     )
                 })}
-            </Carousel>
+            </div>
             <ToastContainer />
         </Fragment>
     );
