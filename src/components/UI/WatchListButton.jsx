@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { updateWatchList } from "../store/AuthSlice";
 import { useSelector, useDispatch } from "react-redux";
-import Cookies from "js-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,7 +39,7 @@ const WatchListButton = (props) => {
             };
             const url = `https://moviedb-backend-1.herokuapp.com/api/${query_word}`;
             const Data = async () => {
-                const token = Cookies.get("token");
+                const token = localStorage.getItem("token");
                 try {
                     const response = await axios.post(url, body, { headers: { "Authorization": `Bearer ${token}` } });
                     dispatch(updateWatchList(response.data.movie));

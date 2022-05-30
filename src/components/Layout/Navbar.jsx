@@ -23,7 +23,7 @@ const Navbar = () => {
         }
 
         window.addEventListener('resize', handleResize);
-    });
+    }, []);
 
 
 

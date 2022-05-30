@@ -72,8 +72,8 @@ const Details = () => {
                             {/* <li ><strong>TYPE : </strong>{media_type}</li> */}
                             <li ><strong>STATUS : </strong> {details.status}</li>
                             {details.tagline && <li ><strong>TAGLINE : </strong> {details.tagline}</li>}
-                            {media_type === 'movie' && <li ><strong>RUNTIME : </strong> {details.runtime} minutes</li>}
-                            {media_type === 'tv' && details.episode_run_time && <li ><strong>EPISODE RUNTIME : </strong> {details.episode_run_time.sort().join(" - ")} minutes</li>}
+                            {(media_type === 'movie' && details.runtime !== 0) && <li ><strong>RUNTIME : </strong> {details.runtime} minutes</li>}
+                            {(media_type === 'tv' && details.episode_run_time !== 0) && <li ><strong>EPISODE RUNTIME : </strong> {details.episode_run_time.sort().join(" - ")} minutes</li>}
                             <li ><strong>OVERVIEW : </strong>{details.overview}</li>
                         </div>
                     </div>

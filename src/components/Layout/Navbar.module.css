@@ -29,6 +29,9 @@
 
 .dropdown {
     display: none;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
 @media screen and (max-width: 900px) {
@@ -42,11 +45,6 @@
 @media screen and (max-width: 750px) {
     .dropdown {
         display: block;
-        background: transparent;
-        border: none;
-        outline: none;
-        float: right;
-        right: 20;
     }
 
     .navbar {

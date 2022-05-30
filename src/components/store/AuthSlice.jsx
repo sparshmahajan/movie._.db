@@ -1,10 +1,9 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
 
 
 let initialState = {};
 
-if (Cookies.get("token")) {
+if (localStorage.getItem("token")) {
     initialState = {
         isLoggedIn: true,
         user_data: JSON.parse(localStorage.getItem("movie")) || []
@@ -30,7 +29,7 @@ const authSlice = createSlice({
             state.isLoggedIn = false;
             state.user_data = [];
             localStorage.removeItem("movie");
-            Cookies.remove("token");
+            localStorage.removeItem("token");
         },
         updateWatchList: (state, action) => {
             state.user_data = action.payload;

@@ -4,7 +4,6 @@ import axios from "axios";
 import Card from "../UI/Card";
 import classes from './WatchList.module.css';
 import { useDispatch } from "react-redux";
-import Cookies from 'js-cookie';
 import { updateWatchList } from "../store/AuthSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,7 +37,7 @@ const WatchList = () => {
         };
         const url = `https://moviedb-backend-1.herokuapp.com/api/remove`;
         const Data = async () => {
-            const token = Cookies.get("token");
+            const token = localStorage.getItem("token");
             try {
                 const response = await axios.post(url, body, { headers: { "Authorization": `Bearer ${token}` } });
                 dispatch(updateWatchList(response.data.movie));
