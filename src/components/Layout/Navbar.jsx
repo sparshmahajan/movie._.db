@@ -15,7 +15,7 @@ const Navbar = () => {
         navigate('/');
     }
 
-    const [visible, setVisible] = useState(window.outerWidth > 750);
+    const [visible, setVisible] = useState(window.innerWidth > 750);
 
     const clickHandler = () => {
         setVisible(prevState => !prevState);
