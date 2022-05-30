@@ -4,7 +4,7 @@ import Button from '../UI/Button';
 import Dropdown from '../../assets/images/Dropdown.svg';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Navbar = () => {
 
@@ -15,17 +15,7 @@ const Navbar = () => {
         navigate('/');
     }
 
-    const [visible, setVisible] = useState(window.outerWidth > 750);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setVisible(window.outerWidth > 750);
-        }
-
-        window.addEventListener('resize', handleResize);
-    }, []);
-
-
+    const [visible, setVisible] = useState(window.innerWidth > 750);
 
     const clickHandler = () => {
         setVisible(prevState => !prevState);
