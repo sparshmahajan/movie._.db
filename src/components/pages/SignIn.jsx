@@ -27,7 +27,8 @@ const SignIn = () => {
   };
 
   const passwordValidity = () => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    // regex for password validation (at least 1 uppercase, 1 lowercase, 1 number, 1 special character, 8 characters long)
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const result = re.test(passwordRef.current.value);
     setIsPasswordValid(result);
     return result;
