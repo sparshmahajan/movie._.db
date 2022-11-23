@@ -7,7 +7,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 
 let search_word = 'trending_movie';
-let url = "https://moviedb-backend-1.herokuapp.com/api/";
+let url = "https://delightful-deer-peplum.cyclic.app/api/";
 
 const CardHolder = (props) => {
 
@@ -52,7 +52,7 @@ const CardHolder = (props) => {
             setIsSearch(true);
         }
 
-        url = "https://moviedb-backend-1.herokuapp.com/api/" + search_word;
+        url = "https://delightful-deer-peplum.cyclic.app/api/" + search_word;
 
         const fetchData = async () => {
             const response = await axios.get(url);

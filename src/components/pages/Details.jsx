@@ -18,7 +18,7 @@ const Details = () => {
 
 
     useEffect(() => {
-        const url = `https://moviedb-backend-1.herokuapp.com/api/search_${media_type}/${search_id}`;
+        const url = `https://delightful-deer-peplum.cyclic.app/api/search_${media_type}/${search_id}`;
         const fetchData = async () => {
             try {
                 const response = await axios.get(url);

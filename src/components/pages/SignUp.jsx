@@ -56,7 +56,7 @@ const SignUp = () => {
       const fetchData = async () => {
         try {
           const response = await axios.post(
-            "https://moviedb-backend-1.herokuapp.com/api/signup",
+            "https://delightful-deer-peplum.cyclic.app/api/signup",
             body
           );
           toast.success(response.data.message, {
